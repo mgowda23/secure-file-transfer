@@ -1,7 +1,14 @@
+# Python cache
 __pycache__/
+*.pyc
+
+# Local database & certs (don’t push secrets)
 *.db
 *.pem
 *.key
-*.env
-received_files/
 
+# Environment files
+.env
+
+# Runtime output
+received_files/
