@@ -28,16 +28,7 @@ Database: SQLite (lightweight logging)
 Security: TLS/SSL, SHA256 file verification
 
 ## 📂 Project Structure
-secure-transfer/
-│── client.py          # CLI tool to pick and send files
-│── server.py          # Secure TLS server to receive files
-│── db.py              # SQLite logging functions
-│── cert.pem           # TLS certificate (self-signed)
-│── key.pem            # TLS private key
-│── transfers.db       # Logs of file transfers
-│── files_to_send/     # Put files here to send
-│── received_files/    # Received files stored here
-│── README.md          # Project documentation
+<img width="448" height="193" alt="Screenshot 2025-09-27 at 2 40 20 PM" src="https://github.com/user-attachments/assets/821d2d8b-5970-4401-8ffa-29ceef6ead23" />
 
 ## ⚡ Quick Start
 ### 1️⃣ Clone Repository
