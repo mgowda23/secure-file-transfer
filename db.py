@@ -30,4 +30,3 @@ def log_transfer(filename, filesize, status):
 
 if __name__ == "__main__":
     init_db()
-

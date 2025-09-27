@@ -3,4 +3,5 @@ __pycache__/
 *.pem
 *.key
 *.env
-recieved_files/
+received_files/
+
