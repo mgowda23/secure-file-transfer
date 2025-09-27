@@ -38,8 +38,6 @@ secure-transfer/
 │── files_to_send/     # Put files here to send
 │── received_files/    # Received files stored here
 │── README.md          # Project documentation
-│── docs/
-    └── secure_file_transfer_architecture_clean.png  # System workflow diagram
 
 ## ⚡ Quick Start
 ### 1️⃣ Clone Repository
