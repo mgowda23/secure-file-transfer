@@ -1,80 +1,41 @@
-# **📦 Secure File Transfer Tool**
+# Secure File Transfer
 
-A lightweight Python-based client-server application for transferring files securely using TLS encryption.
-Supports SHA256 integrity verification, SQLite logging, and a simple CLI file picker for easy use.
+Python client-server tool for sending files over TLS, with SHA-256 integrity checks and SQLite transfer logs.
 
-## 🚀 **Features**
+## Features
 
-🔒 TLS-encrypted sockets for secure file transfer
+- TLS-encrypted sockets
+- SHA-256 verification of received files
+- CLI picker for files in `files_to_send/`
+- Transfer logs in SQLite (`transfers.db`)
+- Graceful shutdown with Ctrl+C
 
-✅ SHA256 integrity check to verify file integrity
+## Stack
 
-🗂️ CLI file selection from files_to_send/ directory
+Python 3.10+ · `socket` · `ssl` · `sqlite3` · `hashlib`
 
-📝 Transfer logs stored in SQLite (transfers.db)
+## Quick start
 
-🛑 Graceful shutdown with Ctrl+C (frees port immediately)
-
-📂 Files automatically stored in received_files/
-
-## 🛠️ Tech Stack
-
-Language: Python 3.10+
-
-Libraries: socket, ssl, sqlite3, hashlib
-
-Database: SQLite (lightweight logging)
-
-Security: TLS/SSL, SHA256 file verification
-
-## 📂 Project Structure
-<img width="448" height="193" alt="Screenshot 2025-09-27 at 2 40 20 PM" src="https://github.com/user-attachments/assets/821d2d8b-5970-4401-8ffa-29ceef6ead23" />
-
-## ⚡ Quick Start
-### 1️⃣ Clone Repository
-git clone https://github.com/your-username/secure-transfer.git
-cd secure-transfer
-
-### 2️⃣ Generate TLS Certificates
+```bash
+git clone https://github.com/mgowda23/secure-file-transfer.git
+cd secure-file-transfer
 openssl req -new -x509 -days 365 -nodes -out cert.pem -keyout key.pem
-
-Use localhost as Common Name (CN).
-
-### 3️⃣ Initialize Database
 python db.py
-
-### 4️⃣ Run Server
 python server.py
+```
 
-Server starts at localhost:5050 and waits for clients.
+In a second terminal:
 
-### 5️⃣ Run Client
+```bash
 python client.py
+```
 
-You’ll see a list of files in files_to_send/.
+Use `localhost` as the certificate Common Name. The server listens on `localhost:5050`. Received files land in `received_files/`.
 
-Pick one by number → it will be securely transferred.
+## Logs
 
-## 📊 Transfer Logs
+```bash
+sqlite3 transfers.db "SELECT * FROM transfers;"
+```
 
-Transfers are saved in transfers.db with:
-+ id
-+ filename
-+ filesize
-+ timestamp
-+ status (SUCCESS / FAILED if hash mismatch)
-
-Check logs using SQLite:
-
-sqlite3 transfers.db
-sqlite> SELECT * FROM transfers;
-
-## 🔮 Future Enhancements
-
-🌐 Web dashboard (Flask) to view logs & transfers
-🔑 User authentication for clients
-📤 Multi-file batch transfer
-📊 Transfer analytics (graphs of file sizes & frequency)
-
-## 👨‍💻 Author
-Mithun V Gowda
+Fields: id, filename, filesize, timestamp, status (`SUCCESS` or `FAILED` on hash mismatch).
